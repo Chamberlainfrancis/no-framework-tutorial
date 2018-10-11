@@ -92,6 +92,26 @@ class Homepage
 
 As you can see now the class has two dependencies. Try to access the page with a GET parameter like this `http://localhost:8000/?name=Arthur%20Dent`.
 
+Based on the `http` documentation. To actually display the output in a browser, you have to add `getContent` method to the existing `show` method. 
+```
+  public function show()
+    {
+        $data = [
+            'name' => $this->request->getParameter('name', 'stranger'),
+        ];
+        $html = $this->renderer->render('Homepage', $data);
+
+        $this->response->setContent($html);
+
+        foreach ($this->response->getHeaders() as $header) {
+            header($header, false);
+        }
+
+        echo $this->response->getContent();
+
+    }
+   ```
+
 Congratulations, you have now successfully laid the groundwork for your application. 
 
 [<< previous](07-inversion-of-control.md) | [next >>](09-templating.md)
