@@ -96,19 +96,15 @@ Based on the `http` documentation. To actually display the output in a browser, 
 ```
   public function show()
     {
-        $data = [
-            'name' => $this->request->getParameter('name', 'stranger'),
-        ];
-        $html = $this->renderer->render('Homepage', $data);
-
-        $this->response->setContent($html);
+        $content = '<h1>Hello World</h1>';
+        $content .= 'Hello ' . $this->request->getParameter('name', 'stranger');
+        $this->response->setContent($content);
 
         foreach ($this->response->getHeaders() as $header) {
             header($header, false);
         }
 
         echo $this->response->getContent();
-
     }
    ```
 
