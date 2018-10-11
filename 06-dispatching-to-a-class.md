@@ -53,4 +53,6 @@ So instead of just calling a method you are now instantiating an object and then
 
 Now if you visit `http://localhost:8000/` everything should work. If not, go back and debug. And of course don't forget to commit your changes.
 
+Note: Don't forget to update using `composer update` or `composer dump-update` 
+
 [<< previous](05-router.md) | [next >>](07-inversion-of-control.md)
